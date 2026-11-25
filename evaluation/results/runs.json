@@ -1,0 +1,150 @@
+{
+  "extract": {
+    "a01": {
+      "guide_id": "4749eeb9f0a0",
+      "seconds": 98.1
+    },
+    "a02": {
+      "guide_id": "a7dca893f214",
+      "seconds": 49.7
+    },
+    "a03": {
+      "guide_id": "a1569e1336de",
+      "seconds": 53.9
+    },
+    "a04": {
+      "guide_id": "485e9e789674",
+      "seconds": 78.2
+    },
+    "a05": {
+      "guide_id": "fecfcac565d9",
+      "seconds": 66.3
+    },
+    "a06": {
+      "guide_id": "4b6bd3a3bdc4",
+      "seconds": 63.3
+    },
+    "a07": {
+      "guide_id": "8ed2b4cdac5a",
+      "seconds": 66.6
+    },
+    "a08": {
+      "guide_id": "f873e22e9fbd",
+      "seconds": 73.4
+    },
+    "a09": {
+      "guide_id": "31b8f4ea09f4",
+      "seconds": 68.9
+    },
+    "a10": {
+      "guide_id": "d2d91ee46e3f",
+      "seconds": 79.9
+    },
+    "a01-missing": {
+      "guide_id": "23167934b58b",
+      "seconds": 72.5
+    },
+    "a03-missing": {
+      "guide_id": "f9a16ee2bfcb",
+      "seconds": 53.3
+    },
+    "a05-missing": {
+      "guide_id": "b0c91271ec03",
+      "seconds": 57.6
+    },
+    "a08-missing": {
+      "guide_id": "1d3b8d1b0b32",
+      "seconds": 47.6
+    },
+    "a10-missing": {
+      "guide_id": "8a3af178c645",
+      "seconds": 78.9
+    }
+  },
+  "images": {
+    "a01:basic": {
+      "guide_id": "baafad1c88ae",
+      "status": "ready",
+      "seconds": 1157.7,
+      "error": null
+    },
+    "a01:context": {
+      "guide_id": "0d24ba344231",
+      "status": "ready",
+      "seconds": 603.0,
+      "error": null
+    },
+    "a01:state": {
+      "guide_id": "b67f6d0fdd2c",
+      "status": "ready",
+      "seconds": 856.4,
+      "error": null
+    },
+    "a02:basic": {
+      "guide_id": "db265835a907",
+      "status": "ready",
+      "seconds": 784.0,
+      "error": null
+    },
+    "a02:context": {
+      "guide_id": "6acaba1c9585",
+      "status": "ready",
+      "seconds": 301.6,
+      "error": null
+    },
+    "a02:state": {
+      "guide_id": "cff88b2ff72e",
+      "status": "ready",
+      "seconds": 506.5,
+      "error": null
+    },
+    "a06:basic": {
+      "guide_id": "f9dca4bf4b8f",
+      "status": "ready",
+      "seconds": 855.7,
+      "error": null
+    },
+    "a06:context": {
+      "guide_id": "4f4b6f74a985",
+      "status": "ready",
+      "seconds": 434.0,
+      "error": null
+    },
+    "a06:state": {
+      "guide_id": "9bf61d963684",
+      "status": "ready",
+      "seconds": 735.2,
+      "error": null
+    },
+    "a09:basic": {
+      "guide_id": "0b880ff6e967",
+      "status": "ready",
+      "seconds": 903.8,
+      "error": null
+    },
+    "a09:context": {
+      "guide_id": "e72844c2d5a1",
+      "status": "ready",
+      "seconds": 422.0,
+      "error": null
+    },
+    "a09:state": {
+      "guide_id": "9975e7a3c105",
+      "status": "ready",
+      "seconds": 554.3,
+      "error": null
+    },
+    "a01:integrated": {
+      "guide_id": "10035672f025",
+      "status": "ready",
+      "seconds": 903.5,
+      "error": null
+    },
+    "a02:integrated": {
+      "guide_id": "35903e1042a7",
+      "status": "ready",
+      "seconds": 638.4,
+      "error": null
+    }
+  }
+}

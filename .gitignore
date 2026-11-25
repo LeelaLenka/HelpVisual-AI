@@ -1,0 +1,26 @@
+# Secrets: keys, tokens and the Kaggle lines live only here, never in git.
+.env
+.env.*
+!.env.example
+
+# Local data: accounts (password hashes), session signing key, guides, images, uploads.
+backend/data/
+
+# Environments, builds, caches
+backend/.venv/
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+frontend/node_modules/
+node_modules/
+frontend/dist/
+.vercel/
+
+# Editor and tool settings
+.vscode/
+.claude/
+.idea/
+*.log
+.DS_Store
+Thumbs.db

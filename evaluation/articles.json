@@ -1,0 +1,176 @@
+{
+  "articles": [
+    {
+      "id": "a01",
+      "title": "MyBank: reset password",
+      "text": "How to reset your password in the MyBank mobile app\n\nBefore you start, make sure you can access the email address registered with your account.\n\nOpen the MyBank app and tap the Profile icon in the bottom right corner. Tap Settings, then choose Security. Tap Reset password. Enter your current password, then type your new password twice. Your new password must be at least 8 characters. Tap Save changes. You will receive a confirmation email within a few minutes.\n\nWarning: Do not share your password with anyone, including bank staff.",
+      "expected_elements": [
+        "Profile",
+        "Settings",
+        "Security",
+        "Reset password",
+        "Save changes"
+      ],
+      "expected_steps": 7
+    },
+    {
+      "id": "a02",
+      "title": "ShopEasy: track an order",
+      "text": "Tracking your ShopEasy order\n\nOpen the ShopEasy app and tap the Account tab at the bottom of the screen. Tap My orders. Select the order you want to track. Tap Track package. A map shows where your parcel is and its expected delivery date.\n\nIf an order shows \"Delayed\" for more than three days, contact support from the Help page.",
+      "expected_elements": [
+        "Account",
+        "My orders",
+        "Track package"
+      ],
+      "expected_steps": 4
+    },
+    {
+      "id": "a03",
+      "title": "StreamBox: cancel membership",
+      "text": "Cancelling your StreamBox membership\n\nSign in to StreamBox on the website. Click your profile picture in the top right corner, then click Account. Under Membership, click Cancel membership. Click Finish cancellation to confirm.\n\nYou can keep watching until the end of your current billing period. No refund is given for the remaining days.",
+      "expected_elements": [
+        "profile picture",
+        "Account",
+        "Cancel membership",
+        "Finish cancellation"
+      ],
+      "expected_steps": 5
+    },
+    {
+      "id": "a04",
+      "title": "MailPro: forward email",
+      "text": "Forwarding your MailPro email to another address\n\nOn the MailPro website, click the gear icon at the top right, then click See all settings. Open the Forwarding tab. Click Add a forwarding address and type the address you want to forward to. Click Next, then Proceed. MailPro sends a confirmation code to that address; enter the code and click Verify.\n\nNote: forwarding only applies to new messages, not to mail already in your inbox.",
+      "expected_elements": [
+        "gear icon",
+        "See all settings",
+        "Forwarding",
+        "Add a forwarding address",
+        "Next",
+        "Proceed",
+        "Verify"
+      ],
+      "expected_steps": 7
+    },
+    {
+      "id": "a05",
+      "title": "HomeNet router: change Wi-Fi password",
+      "text": "Changing your HomeNet Wi-Fi password\n\nConnect a computer to your HomeNet router. Open a web browser and go to 192.168.1.1. Log in with the admin password printed on the sticker under the router. Click Wireless, then click Security. Type your new password in the Passphrase field. Click Apply.\n\nWarning: every device connected to the network will disconnect and must reconnect using the new password.",
+      "expected_elements": [
+        "Wireless",
+        "Security",
+        "Passphrase",
+        "Apply"
+      ],
+      "expected_steps": 6
+    },
+    {
+      "id": "a06",
+      "title": "FoodNow: add a delivery address",
+      "text": "Adding a new delivery address in FoodNow\n\nOpen FoodNow and tap the Profile tab. Tap Addresses, then tap Add new address. Enter the street, building and any delivery notes. Tap Save address. The new address appears in your list and can be chosen at checkout.",
+      "expected_elements": [
+        "Profile",
+        "Addresses",
+        "Add new address",
+        "Save address"
+      ],
+      "expected_steps": 5
+    },
+    {
+      "id": "a07",
+      "title": "CloudBox: share a folder",
+      "text": "Sharing a folder in CloudBox\n\nIn CloudBox on your computer, right-click the folder you want to share and choose Share. Type the email address of the person you want to share with. Open the permission menu and choose Can view or Can edit. Click Send. The other person receives an email with a link to the folder.",
+      "expected_elements": [
+        "Share",
+        "Can view",
+        "Send"
+      ],
+      "expected_steps": 5
+    },
+    {
+      "id": "a08",
+      "title": "PayQuick: turn on two-factor authentication",
+      "text": "Turning on two-factor authentication in PayQuick\n\nBefore you start, have your phone with you.\n\nOpen PayQuick and go to Settings. Tap Security, then tap Two-factor authentication. Tap Turn on. Choose Text message as your verification method. Enter the 6-digit code we send to your phone. Tap Done.\n\nFrom now on, PayQuick asks for a code whenever you sign in on a new device.",
+      "expected_elements": [
+        "Settings",
+        "Security",
+        "Two-factor authentication",
+        "Turn on",
+        "Text message",
+        "Done"
+      ],
+      "expected_steps": 7
+    },
+    {
+      "id": "a09",
+      "title": "TravelGo: change booking dates",
+      "text": "Changing the dates of a TravelGo booking\n\nOpen TravelGo and tap My trips. Select the booking you want to change. Tap Change dates and pick your new check-in and check-out dates. Tap Check price to see any difference in cost. Tap Confirm change.\n\nSome hotels do not allow date changes; in that case the Change dates button does not appear.",
+      "expected_elements": [
+        "My trips",
+        "Change dates",
+        "Check price",
+        "Confirm change"
+      ],
+      "expected_steps": 6
+    },
+    {
+      "id": "a10",
+      "title": "FitTrack: pair a smartwatch",
+      "text": "Pairing a smartwatch with FitTrack\n\nMake sure Bluetooth is turned on on your phone. Open FitTrack and tap the Devices tab. Tap Add device. Choose your watch model from the list. Hold the watch near your phone and tap Pair. When the watch shows a check mark, tap Done.",
+      "expected_elements": [
+        "Devices",
+        "Add device",
+        "Pair",
+        "Done"
+      ],
+      "expected_steps": 6
+    }
+  ],
+  "variants": [
+    {
+      "id": "a01-missing",
+      "base": "a01",
+      "title": "MyBank: reset password (one sentence removed)",
+      "text": "How to reset your password in the MyBank mobile app\n\nBefore you start, make sure you can access the email address registered with your account.\n\nOpen the MyBank app and tap the Profile icon in the bottom right corner. Tap Reset password. Enter your current password, then type your new password twice. Your new password must be at least 8 characters. Tap Save changes. You will receive a confirmation email within a few minutes.\n\nWarning: Do not share your password with anyone, including bank staff.",
+      "removed_text": "Tap Settings, then choose Security.",
+      "removed_element": "Settings",
+      "note": "Profile leads straight to Reset password; Settings and Security are gone."
+    },
+    {
+      "id": "a03-missing",
+      "base": "a03",
+      "title": "StreamBox: cancel membership (one sentence removed)",
+      "text": "Cancelling your StreamBox membership\n\nSign in to StreamBox on the website. Click your profile picture in the top right corner, then click Cancel membership. Click Finish cancellation to confirm.\n\nYou can keep watching until the end of your current billing period. No refund is given for the remaining days.",
+      "removed_text": "then click Account. Under Membership, click",
+      "removed_element": "Account",
+      "note": "From the profile picture straight to Cancel membership."
+    },
+    {
+      "id": "a05-missing",
+      "base": "a05",
+      "title": "HomeNet router: change Wi-Fi password (one sentence removed)",
+      "text": "Changing your HomeNet Wi-Fi password\n\nConnect a computer to your HomeNet router. Open a web browser and go to 192.168.1.1. Log in with the admin password printed on the sticker under the router. Type your new password in the Passphrase field. Click Apply.\n\nWarning: every device connected to the network will disconnect and must reconnect using the new password.",
+      "removed_text": "Click Wireless, then click Security.",
+      "removed_element": "Wireless",
+      "note": "From logging in straight to the Passphrase field."
+    },
+    {
+      "id": "a08-missing",
+      "base": "a08",
+      "title": "PayQuick: turn on two-factor authentication (one sentence removed)",
+      "text": "Turning on two-factor authentication in PayQuick\n\nBefore you start, have your phone with you.\n\nOpen PayQuick and go to Settings. Tap Turn on. Choose Text message as your verification method. Enter the 6-digit code we send to your phone. Tap Done.\n\nFrom now on, PayQuick asks for a code whenever you sign in on a new device.",
+      "removed_text": "Tap Security, then tap Two-factor authentication.",
+      "removed_element": "Security",
+      "note": "From Settings straight to Turn on."
+    },
+    {
+      "id": "a10-missing",
+      "base": "a10",
+      "title": "FitTrack: pair a smartwatch (one sentence removed)",
+      "text": "Pairing a smartwatch with FitTrack\n\nMake sure Bluetooth is turned on on your phone. Open FitTrack and tap the Devices tab. Choose your watch model from the list. Hold the watch near your phone and tap Pair. When the watch shows a check mark, tap Done.",
+      "removed_text": "Tap Add device.",
+      "removed_element": "Add device",
+      "note": "From the Devices tab straight to choosing a watch model."
+    }
+  ],
+  "about": "Evaluation set written for this project. Ten short help articles for fictional apps, each with the interface elements a correct extraction must contain. Five variants have one instruction sentence removed (one or two actions), to test missing-step detection with a known answer."
+}

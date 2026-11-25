@@ -1,0 +1,36 @@
+# Render Blueprint for the HelpVisual backend (FastAPI). New > Blueprint > pick this repository.
+# Values marked sync: false are typed into the Render dashboard; they are never stored in git.
+services:
+  - type: web
+    name: helpvisual-api
+    runtime: python
+    plan: free
+    rootDir: backend
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn app.main:app --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.11.9
+      - key: SECRET_KEY            # signs session cookies; Render generates a random one
+        generateValue: true
+      - key: COOKIE_SECURE         # served over HTTPS
+        value: "true"
+      - key: DEV_RESET_LINKS       # no email service yet: reset links are not written to the log
+        value: "false"
+      - key: CORS_ORIGINS          # your Vercel address, e.g. https://helpvisual.vercel.app
+        sync: false
+      - key: IMAGE_MODE
+        value: auto
+      # From the Kaggle notebook's READY lines (they change every notebook session):
+      - key: ML_ENDPOINT_URL
+        sync: false
+      - key: ML_ENDPOINT_TOKEN
+        sync: false
+      - key: LLM_BASE_URL
+        sync: false
+      - key: LLM_API_KEY
+        sync: false
+      - key: LLM_MODEL
+        sync: false
+      - key: GEMINI_API_KEY        # optional
+        sync: false

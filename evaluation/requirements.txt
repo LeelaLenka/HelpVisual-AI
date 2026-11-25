@@ -1,0 +1,3 @@
+# Only for the evaluation scripts; the app itself does not need these.
+httpx>=0.27
+matplotlib>=3.8

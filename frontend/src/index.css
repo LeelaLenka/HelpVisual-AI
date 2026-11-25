@@ -1,0 +1,146 @@
+@import "tailwindcss";
+
+/* Theme switching uses a class on <html>, so the reader can choose light, dark or system. */
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* Design tokens. Utilities (bg-paper, text-ink...) read these variables, so every page follows the
+   theme without per-element dark: classes. Palette: dark navy #0A1828, turquoise #178582,
+   gold #BFA181, platinum #D1E8E2. Gold marks the control a customer should tap (the product's
+   signature); turquoise is the action colour. Text/background pairs are chosen for WCAG AA. */
+@theme {
+  --font-sans: "IBM Plex Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, monospace;
+  --color-ink: var(--hv-ink);
+  --color-ink-soft: var(--hv-ink-soft);
+  --color-paper: var(--hv-paper);
+  --color-surface: var(--hv-surface);
+  --color-line: var(--hv-line);
+  --color-link: var(--hv-link);
+  --color-good: var(--hv-good);
+  --color-bad: var(--hv-bad);
+  --color-mark-soft: var(--hv-mark-soft);
+  --color-accent: #13716e; /* buttons: white text 5.8:1 (the brand #178582 is 4.4:1, used for decoration) */
+  --color-accent-dark: #0e5b58;
+  --color-mark: #bfa181; /* gold: navy text on it is 7:1 */
+  --color-brand: #0a1828; /* dark navy, for brand surfaces and text on gold */
+  --color-navy: #0a1828;
+  --color-turquoise: #178582;
+  --color-gold: #bfa181;
+  --color-platinum: #d1e8e2;
+}
+
+:root {
+  --hv-ink: #0a1828;
+  --hv-ink-soft: #4a5d6e;
+  --hv-paper: #ffffff;
+  --hv-surface: #f1f6f5;
+  --hv-line: #d9e5e2;
+  --hv-link: #0f6e6b;
+  --hv-good: #18794e;
+  --hv-bad: #b4352b;
+  --hv-mark-soft: #f4eee5;
+  --hv-glow: rgba(23, 133, 130, 0.10);
+  --hv-glow-2: rgba(191, 161, 129, 0.10);
+  color-scheme: light;
+}
+
+.dark {
+  --hv-ink: #e8f3f0;
+  --hv-ink-soft: #97adb5;
+  --hv-paper: #0f2236;
+  --hv-surface: #0a1828;
+  --hv-line: #1f3a4e;
+  --hv-link: #5cc8c2;
+  --hv-good: #4cc38a;
+  --hv-bad: #ff8a7a;
+  --hv-mark-soft: #2b261d;
+  --hv-glow: rgba(23, 133, 130, 0.20);
+  --hv-glow-2: rgba(191, 161, 129, 0.08);
+  color-scheme: dark;
+}
+
+body {
+  background: var(--color-surface);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  font-size: 14px;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
+input,
+textarea,
+select {
+  background: var(--color-paper);
+  color: var(--color-ink);
+}
+
+/* Public-page scene (components/HeroScene.tsx): slow, small movements only. */
+.hv-scene .hv-twinkle { animation: hv-twinkle 5s ease-in-out infinite; }
+.hv-scene .hv-breathe { animation: hv-breathe 9s ease-in-out infinite; transform-box: fill-box; transform-origin: center; }
+.hv-scene .hv-ring { animation: hv-ring 2.4s ease-out infinite; transform-box: fill-box; transform-origin: center; }
+.hv-scene .hv-float { animation: hv-float 7s ease-in-out infinite; }
+.hv-scene .hv-flow { animation: hv-flow 2.8s linear infinite; }
+@keyframes hv-twinkle { 0%, 100% { opacity: 0.35; } 50% { opacity: 0.95; } }
+@keyframes hv-breathe { 0%, 100% { opacity: 0.75; transform: scale(1); } 50% { opacity: 1; transform: scale(1.06); } }
+@keyframes hv-ring { 0% { opacity: 0.9; transform: scale(1); } 100% { opacity: 0; transform: scale(2.1); } }
+@keyframes hv-float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-6px); } }
+@keyframes hv-flow { to { stroke-dashoffset: -16; } }
+
+/* The app's ambient backdrop: two soft glows on the page colour, fixed so content scrolls over it. */
+.hv-ambient {
+  background:
+    radial-gradient(60rem 40rem at 100% -10%, var(--hv-glow), transparent 60%),
+    radial-gradient(50rem 35rem at -10% 110%, var(--hv-glow-2), transparent 60%),
+    var(--color-surface);
+  background-attachment: fixed;
+}
+
+/* Glass surface: panels float over the backdrop. */
+.hv-glass {
+  background: color-mix(in srgb, var(--color-paper) 82%, transparent);
+  backdrop-filter: blur(16px) saturate(140%);
+  -webkit-backdrop-filter: blur(16px) saturate(140%);
+}
+
+/* Glass on the always-dark brand surfaces (landing hero, sign-in panel). */
+.hv-glass-dark {
+  background: rgba(15, 34, 54, 0.55);
+  border: 1px solid rgba(209, 232, 226, 0.12);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+}
+
+/* Small mono labels above headings. */
+.hv-eyebrow {
+  font-family: var(--font-mono);
+  font-size: 11.5px;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+/* Headline text with a platinum-to-turquoise sheen (on dark surfaces only). */
+.hv-sheen {
+  background: linear-gradient(100deg, #f2faf8 0%, #d1e8e2 45%, #5cc8c2 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Cards that lift a little under the pointer. */
+.hv-lift { transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease; }
+.hv-lift:hover { transform: translateY(-2px); box-shadow: 0 18px 40px -22px rgba(10, 24, 40, 0.45); border-color: color-mix(in srgb, var(--color-turquoise) 45%, var(--color-line)); }
+
+/* A slowly turning orbital ring, used as a light decoration where a 3D scene would be too heavy. */
+.hv-orbit { animation: hv-spin 40s linear infinite; }
+@keyframes hv-spin { to { transform: rotate(360deg); } }
+
+@media (prefers-reduced-motion: reduce) {
+  * { animation: none !important; transition: none !important; }
+}
