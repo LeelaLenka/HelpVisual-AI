@@ -49,6 +49,10 @@ class Settings(BaseSettings):
     pass_score: int = 70
 
     data_dir: Path = Path("data")
+    # Optional: a MongoDB connection string (for example a free MongoDB Atlas cluster). When set, the data
+    # folder is mirrored into MongoDB and restored at start-up, so hosts that wipe their disk on restart
+    # (such as Render's free plan) keep accounts, guides and images. Empty: files stay on the local disk only.
+    mongodb_uri: str = ""
 
     # Accounts. SECRET_KEY signs session cookies; when empty, a random key is created in data/.
     secret_key: str = ""

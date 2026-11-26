@@ -40,8 +40,25 @@ Both connect to the GitHub repository and redeploy on every push.
 
 Limits of the free plans:
 - Render's free disk is wiped on every restart, and the service sleeps after 15 minutes idle and
-  restarts on the next visit: accounts, guides and images are lost. Fine for a demo; keeping data
-  needs a paid disk or moving storage to a free database (MongoDB Atlas is planned).
+  restarts on the next visit. Without MONGODB_URI, accounts, guides and images are lost each time.
+  With MONGODB_URI set (below), they are kept in a free MongoDB Atlas cluster.
+
+## Keeping data on Render: MongoDB Atlas (free)
+
+The backend stores its data as files under `data/`. When `MONGODB_URI` is set, it mirrors that folder
+into MongoDB: every file is restored at start-up, and new, changed and deleted files are synced every
+few seconds (images in GridFS). `/api/health` shows `"storage": "mongodb"` when this is active.
+
+1. Sign up at https://www.mongodb.com/cloud/atlas/register and create a free **M0** cluster.
+2. Database Access: add a database user with a password (letters and digits only avoids URL escaping).
+3. Network Access: add `0.0.0.0/0` (Render's outgoing addresses change, so a fixed list does not work).
+4. Connect > Drivers: copy the connection string and add the database name `helpvisual` after the host:
+   `mongodb+srv://USER:PASSWORD@cluster0.xxxxx.mongodb.net/helpvisual?retryWrites=true&w=majority`
+5. Render > the service > Environment: add `MONGODB_URI` with that string. Render redeploys by itself.
+6. Check `https://<your-render-service>.onrender.com/api/health` shows `"storage": "mongodb"`.
+
+The free cluster holds 512 MB: roughly 250 to 400 generated pictures with their guides. Delete old test
+guides in the app to free space. A crash (not a normal stop or sleep) can lose the last few seconds of changes.
 - The first request after sleeping takes about a minute.
 - Password reset has no email service online (`DEV_RESET_LINKS=false`).
 

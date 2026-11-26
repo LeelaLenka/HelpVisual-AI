@@ -20,7 +20,9 @@ services:
       - key: CORS_ORIGINS          # your Vercel address, e.g. https://helpvisual.vercel.app
         sync: false
       - key: IMAGE_MODE
-        value: auto
+        value: kaggle
+      - key: MONGODB_URI           # free MongoDB Atlas cluster: keeps accounts, guides and images across restarts
+        sync: false
       # From the Kaggle notebook's READY lines (they change every notebook session):
       - key: ML_ENDPOINT_URL
         sync: false

@@ -1,6 +1,8 @@
 """HelpVisual AI (small version): FastAPI application."""
 from __future__ import annotations
 
+from contextlib import asynccontextmanager
+
 import secrets
 
 import json
@@ -55,10 +57,25 @@ def ai_error(exc: Exception, prefix: str) -> HTTPException:
 
 def create_app(settings: Settings | None = None) -> FastAPI:
     settings = settings or get_settings()
+    mirror = None
+    if settings.mongodb_uri:
+        from .persistence import MongoMirror
+
+        # Restore the data folder before anything reads it, then keep MongoDB up to date.
+        mirror = MongoMirror(settings.mongodb_uri, settings.data_dir)
+        mirror.restore()
+        mirror.start()
     store = GuideStore(settings.data_dir)
     # A threshold tuned from reviewer labels (data/tuning.json) replaces the configured starting value.
     settings.clip_min_similarity = tuning.load(settings.data_dir).get("clip_min_similarity", settings.clip_min_similarity)
-    app = FastAPI(title="HelpVisual AI", version="0.1.0")
+    @asynccontextmanager
+    async def lifespan(_app: FastAPI):
+        yield
+        if mirror is not None:
+            mirror.stop()  # a final sync before the host stops the server
+
+    app = FastAPI(title="HelpVisual AI", version="0.1.0", lifespan=lifespan)
+    app.state.mirror = mirror
     app.add_middleware(
         CORSMiddleware,
         allow_origins=[o.strip() for o in settings.cors_origins.split(",")],
@@ -140,6 +157,7 @@ def create_app(settings: Settings | None = None) -> FastAPI:
         llm, image = configured(build_llm), configured(build_image_provider)
         connected = bool(llm or image) and probe(settings.ml_endpoint_url, settings.llm_base_url)
         return {
+            "storage": "mongodb" if mirror is not None else "local disk",
             "connected": connected,  # the server answered just now (cached 15 s), not only configured
             "message": None if connected else OFFLINE,
             "llm": llm,

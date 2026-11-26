@@ -356,3 +356,13 @@ was refused at once with 429 RESOURCE_EXHAUSTED, "limit: 0" for the free-tier da
 quotas of the image model. The key and model are valid, but this key's free tier includes no image
 generation, so Gemini cannot paint scenes without billing (no image was produced, none is claimed).
 The status message now says so instead of "resets at midnight". 104 tests pass.
+
+## 26 Nov 2026: data kept on Render with MongoDB Atlas
+
+Deployed: frontend on Vercel (forwards /api and /media to Render), backend on Render's free plan, whose
+disk is wiped on restart and after 15 minutes asleep, so accounts, guides and images were lost. Added
+app/persistence.py: with MONGODB_URI set, the data folder is restored from MongoDB at start-up and
+mirrored there every 3 s (content hash; images in GridFS; deletions mirrored; final sync on shutdown).
+Without it, nothing changes. /api/health reports "storage". Found by a test: FastAPI 0.163 removed
+add_event_handler, so the final sync uses a lifespan function. 108 tests pass (4 new, with mongomock:
+wiped disk, changes and deletions, full app restart keeping an account, local default).
